@@ -6,18 +6,39 @@
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import * as mdc from 'material-components-web'
+  import 'material-components-web/dist/material-components-web.min.css';
+
+  export default {
+    name: 'app',
+    data: () => {
+      return {
+        username: undefined,
+        password: undefined
+      }
+    },
+    mounted: function () {
+      // `this` points to the vm instance
+      mdc.autoInit();
+      console.log('a is: ' + this.username);
+    }
+
+
+  }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+  }
 </style>
