@@ -24,10 +24,13 @@
       data-mdc-auto-init="MDCRipple" @click="login()">
       登录
     </button>
+    <div>{{ user }}</div>
   </div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
+
   export default {
     name: 'login',
     data() {
@@ -35,10 +38,17 @@
         msg: 'Welcome to Your Vue.js App'
       }
     },
+    computed: {
+      ...mapState({
+        user: state => {
+          console.log(state);
+          return state.user.user;
+        }
+      })
+    },
     methods: {
       login: function () {
-        console.log(this.$getUrl('user'));
-        this.$router.push('login')
+        this.$store.commit('user');
       }
     }
   }
